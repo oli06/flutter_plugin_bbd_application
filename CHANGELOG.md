@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Fixing missing dependency
+
 ## 0.1.1
 
 * Fixing "Health suggestions"
