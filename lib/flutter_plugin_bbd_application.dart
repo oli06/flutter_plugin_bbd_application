@@ -6,7 +6,7 @@ class FlutterPluginBbdApplication {
   static const MethodChannel _channel =
       const MethodChannel('flutter_plugin_bbd_application');
 
-    static Future<String> get bbdUserId2 async {
+  static Future<String> get bbdUserId2 async {
     final String userId = await _channel.invokeMethod('getUserId2');
     return userId;
   }
@@ -20,7 +20,8 @@ class FlutterPluginBbdApplication {
   }
 
   static Future<List<String>> get getApplicationConfig async {
-    final List<String> data = await _channel.invokeMethod('getApplicationConfig');
+    final List<String> data =
+        await _channel.invokeMethod('getApplicationConfig');
 
     return data;
   }

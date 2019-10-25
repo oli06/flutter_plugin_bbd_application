@@ -1,5 +1,5 @@
 name: flutter_plugin_bbd_application
-description: Flutter plugin to get access to data that is globally available in any BlackBerry Dynamics Application. To set your Flutter-Blackberry Dynamics App up, follow the instructions on the flutter_plugin_bbd_base
+description: Flutter plugin to get access to data that is globally available in any BlackBerry Dynamics Application.
 version: 0.1.0
 author: oli06
 homepage: https://github.com/oli06
