@@ -16,6 +16,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await FlutterPluginBbdApplication.platformVersion, '42');
+    expect(await FlutterPluginBbdApplication.getVersion, '42');
   });
 }
