@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
+  String _userId = 'Unknown';
 
   @override
   void initState() {
@@ -23,9 +24,11 @@ class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
+    Map<String, dynamic> appConfig;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await FlutterPluginBbdApplication.bbdUserId2;
+      platformVersion = await FlutterPluginBbdApplication.getVersion;
+      appConfig = await FlutterPluginBbdApplication.getApplicationConfig;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -37,6 +40,7 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       _platformVersion = platformVersion;
+      _userId = appConfig['userId'];
     });
   }
 
@@ -45,10 +49,25 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Plugin BBD Application example'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Running on: $_platformVersion\n'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('with userId: '),
+                  Text(
+                    '$_userId',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

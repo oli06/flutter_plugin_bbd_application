@@ -6,11 +6,6 @@ class FlutterPluginBbdApplication {
   static const MethodChannel _channel =
       const MethodChannel('flutter_plugin_bbd_application');
 
-  static Future<String> get bbdUserId2 async {
-    final String userId = await _channel.invokeMethod('getUserId2');
-    return userId;
-  }
-
   static void showPreferenceUI() {
     _channel.invokeMethod('showPreferenceUI');
   }
@@ -19,10 +14,10 @@ class FlutterPluginBbdApplication {
     return await _channel.invokeMethod('getVersion');
   }
 
-  static Future<List<String>> get getApplicationConfig async {
-    final List<String> data =
+  static Future<Map<String, dynamic>> get getApplicationConfig async {
+    Map<dynamic, dynamic> result =
         await _channel.invokeMethod('getApplicationConfig');
 
-    return data;
+    return Future.value(new Map<String, dynamic>.from(result));
   }
 }
